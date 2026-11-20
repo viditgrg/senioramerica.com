@@ -1,0 +1,74 @@
+
+name: Deploy Drupal 11
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: production-deployment
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Deploy Drupal application
+        env:
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
+          SERVER_USER: ${{ secrets.SERVER_USER }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SERVER_KNOWN_HOSTS: ${{ secrets.SERVER_KNOWN_HOSTS }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+          printf '%s\n' "$SERVER_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+          ssh -i ~/.ssh/deploy_key \
+            "$SERVER_USER@$SERVER_HOST" \
+            "DEPLOY_PATH='$DEPLOY_PATH' bash -s" <<'REMOTE'
+
+          set -e
+          cd "$DEPLOY_PATH"
+
+          echo "Starting Drupal deployment..."
+
+          # Enable maintenance mode
+          vendor/bin/drush state:set system.maintenance_mode 1
+
+          # Always disable maintenance mode on exit
+          trap 'vendor/bin/drush state:set system.maintenance_mode 0 || true' EXIT
+
+          # Pull latest code
+          git fetch origin main
+          git reset --hard origin/main
+
+          # Install production dependencies
+          composer install \
+            --no-dev \
+            --prefer-dist \
+            --no-interaction \
+            --optimize-autoloader
+
+          # Run Drupal deployment updates
+          vendor/bin/drush deploy -y
+
+          # Disable maintenance mode
+          vendor/bin/drush state:set system.maintenance_mode 0
+          trap - EXIT
+
+          echo "Drupal deployment completed successfully!"
+
+          REMOTE
