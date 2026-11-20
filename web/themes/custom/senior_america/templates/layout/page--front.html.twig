@@ -1,0 +1,220 @@
+{#
+/**
+ * @file
+ * Olivero's theme implementation to display a single page.
+ *
+ * The doctype, html, head and body tags are not in this template. Instead they
+ * can be found in the html.html.twig template normally located in the
+ * core/modules/system directory.
+ *
+ * Available variables:
+ *
+ * General utility variables:
+ * - base_path: The base URL path of the Drupal installation. Will usually be
+ *   "/" unless you have installed Drupal in a sub-directory.
+ * - is_front: A flag indicating if the current page is the front page.
+ * - logged_in: A flag indicating if the user is registered and signed in.
+ * - is_admin: A flag indicating if the user has permission to access
+ *   administration pages.
+ *
+ * Site identity:
+ * - front_page: The URL of the front page. Use this instead of base_path when
+ *   linking to the front page. This includes the language domain or prefix.
+ *
+ * Page content (in order of occurrence in the default page.html.twig):
+ * - node: Fully loaded node, if there is an automatically-loaded node
+ *   associated with the page and the node ID is the second argument in the
+ *   page's path (e.g. node/12345 and node/12345/revisions, but not
+ *   comment/reply/12345).
+ *
+ * Regions:
+ * - page.header: Items for the header region.
+ * - page.highlighted: Items for the highlighted region.
+ * - page.primary_menu: Items for the primary menu region.
+ * - page.secondary_menu: Items for the secondary menu region.
+ * - page.content: The main content of the current page.
+ * - page.sidebar: Items for the first sidebar.
+ * - page.featured_bottom_first: Items for the first featured bottom region.
+ * - page.featured_bottom_second: Items for the second featured bottom region.
+ * - page.footer_first: Items for the first footer column.
+ * - page.footer_second: Items for the second footer column.
+ * - page.breadcrumb: Items for the breadcrumb region.
+ * - page.social: Items for the social region.
+ *
+ * @see \Drupal\Core\Theme\ThemePreprocess::preprocessPage()
+ * @see html.html.twig
+ */
+#}
+
+{% include '@senior_america/includes/header.html.twig' %}
+
+
+<main id="top">
+  <!-- 1. HERO: Find Senior Living -->
+  <section class="hero" aria-labelledby="heroTitle">
+    <div class="hero-card">
+      <img class="hero-img" src="{{ url("<front>")}}/themes/custom/senior_america/images/hero-caregiver-with-senior.jpg" alt="Caregiver showing a senior woman something on a phone, sitting together on a park bench under a blue sky">
+      <div class="hero-body">
+        
+        <h1 id="heroTitle">Find Senior Living<br> <span style="white-space:nowrap">Near You.</span></h1>
+        <p class="lede"><span class="l1">Our advisors connect seniors with Senior Living, Assisted Living and Memory</span> <span class="l2">Care communities. A personalized service, at zero cost to you.</span></p>
+        <form class="find" id="find" novalidate>
+          <div class="sbar">
+            <div class="sel"><label class="sr-only" for="ctype">Type of care</label><select id="ctype"><option>Senior Living</option><option>Assisted Living</option><option>Memory Care</option></select><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5l4 4 4-4"/></svg></div>
+            <div class="inp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><label class="sr-only" for="where">Zip code or city</label><input id="where" type="text" autocomplete="postal-code" placeholder="Zip code or city"></div>
+            <button class="go" type="submit" id="goBtn">Search<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+          <p class="serr" id="serr" role="alert"></p>
+          <div class="more"><div><div class="more-in">
+            <p class="t">A <span id="mType">Senior Living</span> advisor near <span id="mPlace">you</span> is ready to help.</p>
+            <div class="mf"><label>Your name<input id="fname" type="text" autocomplete="name" placeholder="Full name"></label><label>Phone<input id="fphone" type="tel" autocomplete="tel" placeholder="(555) 000-0000"></label><label>Email<input id="femail" type="email" autocomplete="email" placeholder="you@email.com"></label></div>
+            <div class="more-act"><span>Free, with no obligation.</span><button class="btn btn-dark" type="submit">Talk to an advisor</button></div>
+          </div></div></div>
+          <div class="done" aria-live="polite"><i>✓</i><div><b id="dTitle">Thank you.</b><p id="dText">A senior living advisor will contact you shortly.</p></div></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. MISSION + APP BANNERS -->
+  <section class="mission" aria-label="Our mission">
+    <div class="wrap">
+      <h2 class="h2 mtag rv" id="missionTag"><span class="ln">SeniorAmerica® App connects</span> <span class="ln"><em class="hl-sr">Seniors</em> with trusted &amp; verified <em class="hl-cg">Care Givers</em></span> <span class="ln">for <em class="hl-sr">on-demand care</em>.</span></h2>
+      <div class="banners" id="apps-banners">
+        <div class="bcol sr"><p class="bhead"><span class="t">For Seniors &amp; their families</span></p>
+        <article class="banner rv">
+          <div class="copy">
+                        <h3>SeniorAmerica® App</h3>
+            <p class="who">Book trusted, verified Care Givers on demand.</p>
+            <ul class="bpts"><li>Every Care Giver passes a criminal background check</li><li>Companionship, personal care, housekeeping, transportation and tech support</li><li>Book by the hour, with no contracts or commitments</li></ul>
+            <div class="get"><span class="qr">QR</span><div class="badges"><a class="sbadge" href="#" aria-label="Download on the App Store"><img src="{{ url("<front>")}}/themes/custom/senior_america/images/badge-app-store.svg" alt="Download on the App Store"></a><a class="sbadge" href="#" aria-label="Get it on Google Play"><img src="{{ url("<front>")}}/themes/custom/senior_america/images/badge-google-play.svg" alt="Get it on Google Play"></a></div></div>
+          </div>
+          <div class="bphone" aria-hidden="true"><div class="phone"><div class="scr"><img class="shot on" src="{{ url("<front>")}}/themes/custom/senior_america/images/banner-seniorAmerica-app-screen.jpg" alt=""></div></div></div>
+        </article></div>
+        <div class="bcol cg"><p class="bhead"><span class="t">For Care Givers</span></p>
+        <article class="banner dark rv" style="--d:1">
+          <div class="copy">
+                        <h3>CareGiver SeniorAmerica® App</h3>
+            <p class="who">Earn more, choose your hours, get paid instantly.</p>
+            <ul class="bpts"><li>Set your own schedule and be your own boss</li><li>See care requests near you that match your skills</li><li>Get paid instantly after every visit, not weeks later</li></ul>
+            <div class="get"><span class="qr">QR</span><div class="badges"><a class="sbadge" href="#" aria-label="Download on the App Store"><img src="{{ url("<front>")}}/themes/custom/senior_america/images/badge-app-store.svg" alt="Download on the App Store"></a><a class="sbadge" href="#" aria-label="Get it on Google Play"><img src="{{ url("<front>")}}/themes/custom/senior_america/images/badge-google-play.svg" alt="Get it on Google Play"></a></div></div>
+          </div>
+          <div class="bphone" aria-hidden="true"><div class="phone"><div class="scr"><img class="shot on" src="{{ url("<front>")}}/themes/custom/senior_america/images/banner-caregiver-app-screen.jpg" alt=""></div></div></div>
+        </article></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. OFFERS: v3.0 pinned scroll scenes (Seniors: text left / Care Givers: text right) -->
+  <section class="o2" id="offers" aria-labelledby="offersTitle">
+    <div class="wrap o2-head"><h2 class="h2 rv" id="offersTitle">What SeniorAmerica® Offers</h2></div>
+    <div class="o2-scene sr" data-o2 data-n="4" style="--n:4">
+      <div class="o2-pin">
+        <div class="o2-text">
+          <p class="o2-eyebrow"><span>For Seniors &amp; their families</span></p>
+          <h3 class="o2-title">Trusted care,<br><em>on your terms.</em></h3>
+          <span class="o2-rule" aria-hidden="true"></span>
+          <ol class="o2-list" aria-label="For Seniors &amp; their families"><li class="on"><button type="button" data-go="0" aria-expanded="true"><span>Cheaper</span></button><div class="o2-d"><div><p>We are cheaper than your local Home care company.</p></div></div></li><li><button type="button" data-go="1" aria-expanded="false"><span>Peace of Mind</span></button><div class="o2-d"><div><p>You get access to trusted &amp; professional Care Givers. Each Care Giver goes through a criminal background check.</p></div></div></li><li><button type="button" data-go="2" aria-expanded="false"><span>Flexibility</span></button><div class="o2-d"><div><p>Augment your current care or order new care with SeniorAmerica. No contracts or commitments.</p></div></div></li><li><button type="button" data-go="3" aria-expanded="false"><span>Range of Services</span></button><div class="o2-d"><div><p>SeniorAmerica provides a range of services including Companionship, Personal Care, Housekeeping, Transportation &amp; Technology Support.</p></div></div></li></ol>
+        </div>
+        <div class="o2-media"><div class="o2-track"><figure><img src="{{ url("<front>")}}/themes/custom/senior_america/images/offer-seniors-cheaper.jpg" alt="" style="object-position:38% 30%" decoding="async"><figcaption><h4>Cheaper</h4><p>We are cheaper than your local Home care company.</p></figcaption></figure><figure><img src="{{ url("<front>")}}/themes/custom/senior_america/images/offer-seniors-peace-of-mind.jpg" alt="" style="object-position:62% 30%" decoding="async"><figcaption><h4>Peace of Mind</h4><p>You get access to trusted &amp; professional Care Givers. Each Care Giver goes through a criminal background check.</p></figcaption></figure><figure><img src="{{ url("<front>")}}/themes/custom/senior_america/images/offer-seniors-flexibility.jpg" alt="" style="object-position:34% 40%" decoding="async"><figcaption><h4>Flexibility</h4><p>Augment your current care or order new care with SeniorAmerica. No contracts or commitments.</p></figcaption></figure><figure><img src="{{ url("<front>")}}/themes/custom/senior_america/images/offer-seniors-range-of-services.jpg" alt="" style="object-position:58% 50%" decoding="async"><figcaption><h4>Range of Services</h4><p>SeniorAmerica provides a range of services including Companionship, Personal Care, Housekeeping, Transportation &amp; Technology Support.</p></figcaption></figure></div></div>
+      </div>
+    </div>
+    <div class="o2-scene cg rev" data-o2 data-n="4" style="--n:4">
+      <div class="o2-pin">
+        <div class="o2-text">
+          <p class="o2-eyebrow"><span>For Care Givers</span></p>
+          <h3 class="o2-title">Your skills,<br><em>your schedule.</em></h3>
+          <span class="o2-rule" aria-hidden="true"></span>
+          <ol class="o2-list" aria-label="For Care Givers"><li class="on"><button type="button" data-go="0" aria-expanded="true"><span>Earn More</span></button><div class="o2-d"><div><p>You earn more with SeniorAmerica.</p></div></div></li><li><button type="button" data-go="1" aria-expanded="false"><span>Get Paid Instantly</span></button><div class="o2-d"><div><p>Now, you don't have to wait weeks to get paid. Get paid instantly with SeniorAmerica.</p></div></div></li><li><button type="button" data-go="2" aria-expanded="false"><span>Freedom &amp; Autonomy</span></button><div class="o2-d"><div><p>Set your own schedule. Be your own boss. Enjoy freedom &amp; autonomy in your life.</p></div></div></li><li><button type="button" data-go="3" aria-expanded="false"><span>Choose How You Want to Serve</span></button><div class="o2-d"><div><p>Choose to provide care on what you are good at, qualified for, or enjoy doing. Work on something good that helps others.</p></div></div></li></ol>
+        </div>
+        <div class="o2-media"><div class="o2-track"><figure><img src="{{ url("<front>")}}/themes/custom/senior_america/images/offer-caregivers-earn-more.jpg" alt="" style="object-position:56% 30%" decoding="async"><figcaption><h4>Earn More</h4><p>You earn more with SeniorAmerica.</p></figcaption></figure><figure><img src="{{ url("<front>")}}/themes/custom/senior_america/images/offer-caregivers-get-paid-instantly.jpg" alt="" style="object-position:58% 25%" decoding="async"><figcaption><h4>Get Paid Instantly</h4><p>Now, you don't have to wait weeks to get paid. Get paid instantly with SeniorAmerica.</p></figcaption></figure><figure><img src="{{ url("<front>")}}/themes/custom/senior_america/images/offer-caregivers-freedom-and-autonomy.jpg" alt="" style="object-position:46% 50%" decoding="async"><figcaption><h4>Freedom &amp; Autonomy</h4><p>Set your own schedule. Be your own boss. Enjoy freedom &amp; autonomy in your life.</p></figcaption></figure><figure><img src="{{ url("<front>")}}/themes/custom/senior_america/images/offer-caregivers-choose-how-you-want-to-serve.jpg" alt="" style="object-position:70% 40%" decoding="async"><figcaption><h4>Choose How You Want to Serve</h4><p>Choose to provide care on what you are good at, qualified for, or enjoy doing. Work on something good that helps others.</p></figcaption></figure></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. TWO APPS -->
+  <section class="section apps-scene" id="apps" aria-labelledby="appsTitle">
+    <div class="wrap apps-head">
+      <div class="center"><h2 class="h2 rv" style="--d:1" id="appsTitle"><span class="tl1">Two Apps. Connecting</span> <span class="tl2"><span class="hs">Seniors</span> &amp; <span class="hc">Care Givers</span></span></h2><p class="lede rv" style="--d:2;margin-top:14px">SeniorAmerica® App connects Seniors with trusted &amp; verified Care Givers for on-demand care.</p></div>
+    </div>
+    <div class="apps-pin" id="appsPin"><div class="apps-stick"><div class="wrap">
+      <div class="apps-grid" id="appsGrid">
+        <div class="wcol"><p class="side">For Seniors &amp; their families</p><div class="wheel left" data-wheel="sr"><ol>
+          <li data-k="0"><i class="sic num" aria-hidden="true">01</i><b>Create Account</b><span>Sign up and share a few basic details so we can understand who needs care.</span></li>
+          <li data-k="1"><i class="sic num" aria-hidden="true">02</i><b>Choose Care</b><span>Tell us what kind of care and support you need.</span></li>
+          <li data-k="2"><i class="sic num" aria-hidden="true">03</i><b>Share Details</b><span>Connect with Care Givers who match your specific needs.</span></li>
+          <li data-k="3"><i class="sic num" aria-hidden="true">04</i><b>Confirm Booking</b><span>Review your Care Giver, confirm the details, and securely book care.</span></li>
+        </ol></div></div>
+        <div class="appcol sr"><div class="phone"><div class="scr" data-phone="sr"><img class="shot on" src="{{ url("<front>")}}/themes/custom/senior_america/images/seniorAmerica-app-create-an-account.jpg" alt="SeniorAmerica app: create an account"><img class="shot" src="{{ url("<front>")}}/themes/custom/senior_america/images/seniorAmerica-app-choose-senior-care-services.jpg" alt="SeniorAmerica app: choose senior care services"><img class="shot" src="{{ url("<front>")}}/themes/custom/senior_america/images/seniorAmerica-app-care-givers-matched-to-your-needs.jpg" alt="SeniorAmerica app: Care Givers matched to your needs"><div class="shot cb-screen" role="img" aria-label="SeniorAmerica app: confirm your booking"><div class="cb-top"><span class="cb-back">‹</span><b>Confirm Booking</b><span></span></div><div class="cb-card"><span class="cb-av">SM</span><div><b>Sarah Mitchell</b><span>Certified Care Giver</span><em>★ 4.9 · Background checked</em></div></div><div class="cb-rows"><div><span>Service</span><b>Companionship</b></div><div><span>Date</span><b>Tue, Oct 28</b></div><div><span>Time</span><b>10:00 AM – 2:00 PM</b></div><div><span>Duration</span><b>4 hours</b></div><div><span>Address</span><b>201 Washington St, Boston</b></div></div><div class="cb-note">You can reschedule or cancel up to 24 hours before the visit.</div><div class="cb-btn">Confirm Booking</div></div></div></div></div>
+        <div class="hlink" aria-hidden="true"><span class="hl-line l"><i></i></span><span class="hl-heart" id="hlHeart"><svg viewBox="712 203 1957 1853"><path fill="url(#brandG)" d="M2663.51,804.04c-19.15-167.25-94.25-314.99-217.19-427.26-121.83-111.24-278.56-172.51-441.33-172.51-110.71,0-220.17,28.62-317.67,82.91-97.87-54.65-207.76-83.46-318.91-83.46-163.08,0-320.24,61.46-442.5,173.05-125.97,114.97-199.21,269.94-211.82,448.16-11,156.2,26.59,323.28,105.85,470.46,166.57,309.19,422.82,570.19,703.03,716.07,56.95,29.66,114.14,44.71,169.98,44.71s104.68-13.78,151.75-40.97c303.85-175.92,554.84-435.17,725.83-749.73,77.7-143.02,110.72-306.89,92.98-461.43Z"/></svg></span><span class="hl-line r"><i></i></span></div>
+        <div class="appcol cg"><div class="phone"><div class="scr" data-phone="cg"><img class="shot on" src="{{ url("<front>")}}/themes/custom/senior_america/images/caregiver-app-create-your-free-account.jpg" alt="CareGiver app: create your free account"><img class="shot" src="{{ url("<front>")}}/themes/custom/senior_america/images/caregiver-app-home-and-work-profile.jpg" alt="CareGiver app: home and work profile"><img class="shot" src="{{ url("<front>")}}/themes/custom/senior_america/images/caregiver-app-care-requests-with-match-level.jpg" alt="CareGiver app: care requests with match level"><img class="shot" src="{{ url("<front>")}}/themes/custom/senior_america/images/caregiver-app-availability-and-schedule.jpg" alt="CareGiver app: availability and schedule"></div></div></div>
+        <div class="wcol right"><p class="side">For Care Givers</p><div class="wheel right" data-wheel="cg" style="text-align:right"><ol>
+          <li data-k="0" style="align-items:flex-end"><i class="sic num" aria-hidden="true">01</i><b>Create Account</b><span>Sign up as a CareGiver and join a growing community earning on their own schedule.</span></li>
+          <li data-k="1" style="align-items:flex-end"><i class="sic num" aria-hidden="true">02</i><b>Build Your Profile</b><span>Add your work area, availability and the services you offer.</span></li>
+          <li data-k="2" style="align-items:flex-end"><i class="sic num" aria-hidden="true">03</i><b>Get Matched</b><span>See care requests nearby, with match level and distance.</span></li>
+          <li data-k="3" style="align-items:flex-end"><i class="sic num" aria-hidden="true">04</i><b>Manage Your Schedule</b><span>Keep every visit in one timeline, and get paid instantly.</span></li>
+        </ol></div></div>
+      </div>
+      <div class="dots" id="appDots"><button type="button" class="on"><i></i><span class="sr-only">Step 1</span></button><button type="button"><i></i><span class="sr-only">Step 2</span></button><button type="button"><i></i><span class="sr-only">Step 3</span></button><button type="button"><i></i><span class="sr-only">Step 4</span></button></div>
+    </div></div></div>
+    <div class="wrap"><div class="apps-qr" id="appsQr" data-app="sr"><div class="aq sr"><div class="mini"><div class="mini-h"><b>SeniorAmerica® App</b><span>For Seniors &amp; their families</span></div><div class="mini-qrs"><div class="qrt"><span class="qr" style="background-image:url(&quot;images/qr-code-pattern-2.svg&quot;)"></span><em>App Store<small>iPhone</small></em></div><div class="qrt"><span class="qr" style="background-image:url(&quot;images/qr-code-pattern-3.svg&quot;)"></span><em>Google Play<small>Android</small></em></div></div><small class="mini-cap">Scan to download<svg class="cap-arrow" viewBox="0 0 132 44" aria-hidden="true"><path d="M4 30C30 6 74 4 116 20" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="7 7"/><path d="M103 9.5 118.5 21 102 29" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="cap-arrow-long" viewBox="0 0 150 44" aria-hidden="true"><path d="M5 8C22 26 66 38 132 26" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="7 7"/><path d="M121 13 137 25 122 36" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></small></div></div><div class="aq cg"><div class="mini dark"><div class="mini-h"><b>CareGiver SeniorAmerica® App</b><span>For Care Givers</span></div><div class="mini-qrs"><div class="qrt"><span class="qr" style="background-image:url(&quot;images/qr-code-pattern-4.svg&quot;)"></span><em>App Store<small>iPhone</small></em></div><div class="qrt"><span class="qr" style="background-image:url(&quot;images/qr-code-pattern-5.svg&quot;)"></span><em>Google Play<small>Android</small></em></div></div><small class="mini-cap">Scan to download<svg class="cap-arrow" viewBox="0 0 132 44" aria-hidden="true"><path d="M4 30C30 6 74 4 116 20" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="7 7"/><path d="M103 9.5 118.5 21 102 29" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="cap-arrow-long" viewBox="0 0 150 44" aria-hidden="true"><path d="M5 8C22 26 66 38 132 26" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="7 7"/><path d="M121 13 137 25 122 36" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></small></div></div></div></div>
+  </section>
+
+  <!-- 5. CUSTOMER STORIES -->
+  <section class="section" id="stories" aria-labelledby="storiesTitle">
+    <div class="wrap">
+      <div class="stories-top"><div><h2 class="h2 rv" style="--d:1" id="storiesTitle">Customer Stories</h2></div><div class="arrows rv"><button type="button" id="sPrev" aria-label="Previous story"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button><button type="button" id="sNext" aria-label="Next story"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
+      <div class="track" id="track">
+        <figure class="story" style="margin:0"><div class="ph sp"><span class="pl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5L6 20"/></svg>Image</span></div><div class="q"><div><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>“When it was time to find assisted living for my wife, I didn't know where to start. Our advisor listened carefully, understood our needs, and helped us find the perfect community. The entire process was stress-free and reassuring.”</blockquote></div><figcaption><b>Robert &amp; Linda Thompson</b><span class="r">Family, Senior Living</span></figcaption></div></figure>
+        <figure class="story" style="margin:0"><div class="ph sp"><span class="pl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5L6 20"/></svg>Image</span></div><div class="q"><div><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>“When it was time to find assisted living for my wife, I didn't know where to start. Our advisor listened carefully, understood our needs, and helped us find the perfect community. The entire process was stress-free and reassuring.”</blockquote></div><figcaption><b>Johnathan Timber</b><span class="r">Senior</span></figcaption></div></figure>
+        <figure class="story" style="margin:0"><div class="ph sp"><span class="pl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5L6 20"/></svg>Image</span></div><div class="q"><div><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>“When it was time to find assisted living for my wife, I didn't know where to start. Our advisor listened carefully, understood our needs, and helped us find the perfect community. The entire process was stress-free and reassuring.”</blockquote></div><figcaption><b>Georgia H.</b><span class="r">Senior</span></figcaption></div></figure>
+        <figure class="story" style="margin:0"><div class="ph sp"><span class="pl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5L6 20"/></svg>Image</span></div><div class="q"><div><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>“When it was time to find assisted living for my wife, I didn't know where to start. Our advisor listened carefully, understood our needs, and helped us find the perfect community. The entire process was stress-free and reassuring.”</blockquote></div><figcaption><b>Michelle M.</b><span class="r">Family</span></figcaption></div></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. TEAM -->
+  <section class="section" id="team" aria-labelledby="teamTitle">
+    <div class="wrap">
+      <div class="team-top"><div><h2 class="h2 rv" style="--d:1" id="teamTitle">SeniorAmerica® Leadership Team</h2></div><a class="btn btn-line rv" href="#team">Know More<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      <div class="team-grid">
+        <figure class="member rv" style="--d:0"><div class="ph photo"><img src="{{ url("<front>")}}/themes/custom/senior_america/images/team-rahul-menon.jpg" alt="Rahul Menon"><div class="hover"><p>Leads SeniorAmerica's vision, building innovative solutions that make senior care simpler and more accessible.</p><div class="soc"><a href="#" aria-label="Rahul Menon on LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10.5V17M8 7.2v.1M12 17v-6.5M12 13.5c0-1.8 1-3 2.5-3s2.5 1 2.5 3V17"/></svg></a><a href="#" aria-label="Rahul Menon on X"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg></a></div></div></div><figcaption><b>Rahul Menon</b><span class="r">Chief Executive Officer, Senior America Inc.</span></figcaption></figure>
+        <figure class="member rv" style="--d:1"><div class="ph photo"><img src="{{ url("<front>")}}/themes/custom/senior_america/images/team-adam-stanley.jpg" alt="Adam Stanley"><div class="hover"><p>Bio coming soon.</p><div class="soc"><a href="#" aria-label="Adam Stanley on LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10.5V17M8 7.2v.1M12 17v-6.5M12 13.5c0-1.8 1-3 2.5-3s2.5 1 2.5 3V17"/></svg></a><a href="#" aria-label="Adam Stanley on X"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg></a></div></div></div><figcaption><b>Adam Stanley</b><span class="r">Chief Commercial Officer, Senior America Inc.</span></figcaption></figure>
+        <figure class="member rv" style="--d:2"><div class="ph photo"><img src="{{ url("<front>")}}/themes/custom/senior_america/images/team-lori-o-doherty.jpg" alt="Lori O&#39;Doherty"><div class="hover"><p>Bio coming soon.</p><div class="soc"><a href="#" aria-label="Lori O'Doherty on LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10.5V17M8 7.2v.1M12 17v-6.5M12 13.5c0-1.8 1-3 2.5-3s2.5 1 2.5 3V17"/></svg></a><a href="#" aria-label="Lori O'Doherty on X"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg></a></div></div></div><figcaption><b>Lori O'Doherty</b><span class="r">Area Lead, Greater Boston</span></figcaption></figure>
+        <figure class="member rv" style="--d:0"><div class="ph photo"><img src="{{ url("<front>")}}/themes/custom/senior_america/images/team-emily-carter.jpg" alt="Emily Carter"><div class="hover"><p>Bio coming soon.</p><div class="soc"><a href="#" aria-label="Emily Carter on LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10.5V17M8 7.2v.1M12 17v-6.5M12 13.5c0-1.8 1-3 2.5-3s2.5 1 2.5 3V17"/></svg></a><a href="#" aria-label="Emily Carter on X"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg></a></div></div></div><figcaption><b>Emily Carter</b><span class="r">Area Manager, SeniorAmerica®</span></figcaption></figure>
+        <figure class="member rv" style="--d:1"><div class="ph photo"><img src="{{ url("<front>")}}/themes/custom/senior_america/images/team-olivia-bennett.jpg" alt="Olivia Bennett"><div class="hover"><p>Bio coming soon.</p><div class="soc"><a href="#" aria-label="Olivia Bennett on LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10.5V17M8 7.2v.1M12 17v-6.5M12 13.5c0-1.8 1-3 2.5-3s2.5 1 2.5 3V17"/></svg></a><a href="#" aria-label="Olivia Bennett on X"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg></a></div></div></div><figcaption><b>Olivia Bennett</b><span class="r">Area Manager, SeniorAmerica®</span></figcaption></figure>
+        <figure class="member rv" style="--d:2"><div class="ph photo"><img src="{{ url("<front>")}}/themes/custom/senior_america/images/team-chloe-anderson.jpg" alt="Chloe Anderson"><div class="hover"><p>Bio coming soon.</p><div class="soc"><a href="#" aria-label="Chloe Anderson on LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10.5V17M8 7.2v.1M12 17v-6.5M12 13.5c0-1.8 1-3 2.5-3s2.5 1 2.5 3V17"/></svg></a><a href="#" aria-label="Chloe Anderson on X"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg></a></div></div></div><figcaption><b>Chloe Anderson</b><span class="r">Area Manager, SeniorAmerica®</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. JOIN -->
+  <div class="wrap">
+    <section class="join rv" id="join" aria-labelledby="joinTitle">
+      <svg class="heart" viewBox="712 203 1957 1853" aria-hidden="true"><path d="M2663.51,804.04c-19.15-167.25-94.25-314.99-217.19-427.26-121.83-111.24-278.56-172.51-441.33-172.51-110.71,0-220.17,28.62-317.67,82.91-97.87-54.65-207.76-83.46-318.91-83.46-163.08,0-320.24,61.46-442.5,173.05-125.97,114.97-199.21,269.94-211.82,448.16-11,156.2,26.59,323.28,105.85,470.46,166.57,309.19,422.82,570.19,703.03,716.07,56.95,29.66,114.14,44.71,169.98,44.71s104.68-13.78,151.75-40.97c303.85-175.92,554.84-435.17,725.83-749.73,77.7-143.02,110.72-306.89,92.98-461.43Z"/></svg>
+      
+      <h2 class="h2" id="joinTitle">Join SeniorAmerica® Team</h2>
+      <p class="lede">Passionate about helping Seniors and Care Givers in the most important moments of their lives? We want to hear from you.</p>
+      <a class="btn btn-dark" href="mailto:hi@senioramerica.com">Join Us</a>
+    </section>
+  </div>
+
+  <!-- 8. FAQ -->
+  <section class="section" id="faq" aria-labelledby="faqTitle">
+    <div class="wrap faq">
+      <h2 class="h2 center rv" id="faqTitle" style="font-size:clamp(28px,3vw,42px)">Frequently asked questions</h2>
+      <div class="faq-list">
+        <details><summary>What is SeniorAmerica®?<i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></i></summary><div class="a">SeniorAmerica® is America's Senior Care Platform. The SeniorAmerica® App connects Seniors with trusted &amp; verified Care Givers for on-demand care, and our advisors help families find Senior Living, Assisted Living and Memory Care communities.</div></details>
+        <details><summary>How much does Find Senior Living cost?<i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></i></summary><div class="a">Nothing. It is a personalized service, at zero cost to you.</div></details>
+        <details><summary>Are Care Givers verified?<i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></i></summary><div class="a">Yes. Each Care Giver goes through a criminal background check.</div></details>
+        <details><summary>What services can I book?<i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></i></summary><div class="a">Companionship, Personal Care, Housekeeping, Transportation &amp; Technology Support.</div></details>
+        <details><summary>Do I need a contract?<i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></i></summary><div class="a">No. Augment your current care or order new care. No contracts or commitments.</div></details>
+        <details><summary>How do Care Givers get paid?<i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></i></summary><div class="a">Instantly. You don't have to wait weeks to get paid.</div></details>
+        <details><summary>Which app should I download?<i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></i></summary><div class="a">Seniors and their families use the SeniorAmerica® App. Care Givers use the CareGiver SeniorAmerica® App.</div></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+{% include '@senior_america/includes/footer.html.twig' %}
