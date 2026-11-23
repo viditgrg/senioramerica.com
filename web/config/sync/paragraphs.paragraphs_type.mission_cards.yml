@@ -1,0 +1,10 @@
+uuid: 1d967408-e6e5-48ca-8198-f912d7a271ac
+langcode: en
+status: true
+dependencies: {  }
+id: mission_cards
+label: 'Mission Cards'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

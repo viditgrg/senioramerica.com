@@ -1,0 +1,24 @@
+uuid: fe4b687f-3193-45cb-b06b-f615ca8ac2a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.offers.field_tab_items
+    - paragraphs.paragraphs_type.offers
+  module:
+    - entity_reference_revisions
+id: paragraph.offers.default
+targetEntityType: paragraph
+bundle: offers
+mode: default
+content:
+  field_tab_items:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

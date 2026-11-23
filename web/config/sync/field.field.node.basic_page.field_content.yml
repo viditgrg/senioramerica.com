@@ -1,0 +1,58 @@
+uuid: 17c4b898-9eb1-47d7-8119-5557b458619e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content
+    - node.type.basic_page
+    - paragraphs.paragraphs_type.banner
+    - paragraphs.paragraphs_type.faq
+    - paragraphs.paragraphs_type.mission_section
+    - paragraphs.paragraphs_type.tabs
+  module:
+    - entity_reference_revisions
+id: node.basic_page.field_content
+field_name: field_content
+entity_type: node
+bundle: basic_page
+label: Content
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      banner: banner
+      faq: faq
+      mission_section: mission_section
+      tabs: tabs
+    negate: 0
+    target_bundles_drag_drop:
+      banner:
+        weight: 6
+        enabled: true
+      faq:
+        weight: 7
+        enabled: true
+      faq_s_items:
+        weight: 8
+        enabled: false
+      mission_cards:
+        weight: 9
+        enabled: false
+      mission_section:
+        weight: 10
+        enabled: true
+      tab_data:
+        weight: 15
+        enabled: false
+      tab_links:
+        weight: 16
+        enabled: false
+      tabs:
+        weight: 14
+        enabled: true
+field_type: entity_reference_revisions

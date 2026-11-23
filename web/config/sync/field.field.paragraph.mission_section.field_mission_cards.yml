@@ -1,0 +1,43 @@
+uuid: b3a9f4a8-2e35-4a74-aad5-f8e3468780b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_mission_cards
+    - paragraphs.paragraphs_type.mission_cards
+    - paragraphs.paragraphs_type.mission_section
+  module:
+    - entity_reference_revisions
+id: paragraph.mission_section.field_mission_cards
+field_name: field_mission_cards
+entity_type: paragraph
+bundle: mission_section
+label: 'Mission Cards'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      mission_cards: mission_cards
+    negate: 0
+    target_bundles_drag_drop:
+      banner:
+        weight: 6
+        enabled: false
+      faq:
+        weight: 7
+        enabled: false
+      faq_s_items:
+        weight: 8
+        enabled: false
+      mission_cards:
+        weight: 9
+        enabled: true
+      mission_section:
+        weight: 10
+        enabled: false
+field_type: entity_reference_revisions

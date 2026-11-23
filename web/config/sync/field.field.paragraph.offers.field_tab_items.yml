@@ -1,0 +1,55 @@
+uuid: a645ea8d-b620-4f9f-8912-50f1f9869b95
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tab_items
+    - paragraphs.paragraphs_type.offers
+    - paragraphs.paragraphs_type.tabs
+  module:
+    - entity_reference_revisions
+id: paragraph.offers.field_tab_items
+field_name: field_tab_items
+entity_type: paragraph
+bundle: offers
+label: 'Tab Items'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      tabs: tabs
+    negate: 0
+    target_bundles_drag_drop:
+      banner:
+        weight: 10
+        enabled: false
+      faq:
+        weight: 11
+        enabled: false
+      faq_s_items:
+        weight: 12
+        enabled: false
+      mission_cards:
+        weight: 13
+        enabled: false
+      mission_section:
+        weight: 14
+        enabled: false
+      offers:
+        weight: 15
+        enabled: false
+      tab_data:
+        weight: 17
+        enabled: false
+      tab_links:
+        weight: 18
+        enabled: false
+      tabs:
+        weight: 16
+        enabled: true
+field_type: entity_reference_revisions

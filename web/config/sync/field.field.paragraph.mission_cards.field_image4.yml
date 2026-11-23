@@ -1,0 +1,29 @@
+uuid: 686c4d7f-4460-4ed7-9111-c3b5ba9e56d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image4
+    - media.type.image
+    - paragraphs.paragraphs_type.mission_cards
+id: paragraph.mission_cards.field_image4
+field_name: field_image4
+entity_type: paragraph
+bundle: mission_cards
+label: Image4
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,52 @@
+uuid: 49bacb35-dabd-4b47-b273-333d32c74324
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tab_links
+    - paragraphs.paragraphs_type.tab_links
+    - paragraphs.paragraphs_type.tabs
+  module:
+    - entity_reference_revisions
+id: paragraph.tabs.field_tab_links
+field_name: field_tab_links
+entity_type: paragraph
+bundle: tabs
+label: 'Tab links'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      tab_links: tab_links
+    negate: 0
+    target_bundles_drag_drop:
+      banner:
+        weight: 9
+        enabled: false
+      faq:
+        weight: 10
+        enabled: false
+      faq_s_items:
+        weight: 11
+        enabled: false
+      mission_cards:
+        weight: 12
+        enabled: false
+      mission_section:
+        weight: 13
+        enabled: false
+      tab_data:
+        weight: 15
+        enabled: false
+      tab_links:
+        weight: 16
+        enabled: true
+      tabs:
+        weight: 14
+        enabled: false
+field_type: entity_reference_revisions

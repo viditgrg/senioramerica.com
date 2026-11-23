@@ -1,0 +1,41 @@
+uuid: 951e0064-bd24-4670-a4c2-206b9678b79d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.tab_links.field_id
+    - field.field.paragraph.tab_links.field_short_description
+    - field.field.paragraph.tab_links.field_title
+    - paragraphs.paragraphs_type.tab_links
+id: paragraph.tab_links.default
+targetEntityType: paragraph
+bundle: tab_links
+mode: default
+content:
+  field_id:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_short_description:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

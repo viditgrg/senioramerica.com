@@ -1,0 +1,40 @@
+uuid: c3bfd83d-6e9e-4d4d-81fc-058e2f8ec8f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.tab_data.field_id
+    - field.field.paragraph.tab_data.field_image
+    - field.field.paragraph.tab_data.field_select_class
+    - paragraphs.paragraphs_type.tab_data
+  module:
+    - media_library
+id: paragraph.tab_data.default
+targetEntityType: paragraph
+bundle: tab_data
+mode: default
+content:
+  field_id:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_image:
+    type: media_library_widget
+    weight: 2
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_select_class:
+    type: options_select
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
